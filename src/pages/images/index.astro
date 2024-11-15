@@ -1,0 +1,44 @@
+---
+import { Image, Picture } from "astro:assets";
+import MainLayout from "src/layouts/MainLayout.astro";
+
+import post05 from "@images/post-05.png";
+---
+
+<MainLayout title="Images">
+  <h1 class="text-5xl text-white uppercase mb-5">Images</h1>
+
+  <img src="/public/assets/images/post-05.png" alt="post-05" width="250" />
+
+  <h1 class="text-5xl text-white capitalize my-5">Low quality</h1>
+  <Image src={post05} alt="post-05" quality={"low"} width={250} height={250} />
+
+  <h1 class="text-5xl text-white capitalize my-5">Mid quality</h1>
+  <Image src={post05} alt="post-05" quality={"mid"} width={250} height={250} />
+
+  <h1 class="text-5xl text-white capitalize my-5">high quality</h1>
+  <Image src={post05} alt="post-05" quality={"high"} width={250} height={250} />
+
+  <h1 class="text-5xl text-white capitalize my-5">max quality</h1>
+  <Image src={post05} alt="post-05" quality={"max"} width={250} height={250} />
+
+  <h1 class="text-5xl text-white capitalize my-5">Picture</h1>
+  <Picture
+    src={post05}
+    alt="post-05"
+    formats={["avif", "webp", "jpg"]}
+    quality={"max"}
+    widths={[240, 540, 720, post05.width]}
+    sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${post05.width}px`}
+    height={250}
+  />
+
+  <div style="height: 3000px; background-color: red;"></div>
+
+  <img
+    loading="lazy"
+    src="/public/assets/images/post-01.png"
+    alt="post-05"
+    width="250"
+  />
+</MainLayout>
