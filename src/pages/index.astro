@@ -4,7 +4,7 @@ import { siteConfig } from "../config/site-config";
 import MainLayout from "../layouts/MainLayout.astro";
 import TypeBlogPost from "src/components/TypeBlogPost.astro";
 
-const blogPost = await getCollection("blog");
+const blogPost = await getCollection("blog", (post) => post.data.isDraft === false);
 ---
 
 <MainLayout title="Axl's Blog">
