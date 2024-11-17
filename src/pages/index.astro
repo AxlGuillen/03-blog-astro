@@ -4,7 +4,10 @@ import { siteConfig } from "../config/site-config";
 import MainLayout from "../layouts/MainLayout.astro";
 import TypeBlogPost from "src/components/TypeBlogPost.astro";
 
-const blogPost = await getCollection("blog", (post) => post.data.isDraft === false);
+const blogPost = await getCollection(
+  "blog",
+  (post) => post.data.isDraft === false
+);
 ---
 
 <MainLayout title="Axl's Blog">
@@ -15,7 +18,8 @@ const blogPost = await getCollection("blog", (post) => post.data.isDraft === fal
         {siteConfig.title}
       </h1>
 
-      <a href="/blog/1">Blog paginado</a>
+      <a href="/blog/1" class="mr-2">Blog paginado</a>
+      <a href="/authors" class="mr-2">Autores</a>
 
       <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
         {blogPost.map((post) => <TypeBlogPost post={post} />)}
