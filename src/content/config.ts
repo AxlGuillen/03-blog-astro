@@ -22,11 +22,17 @@ const blogCollection = defineCollection({
 
   const authorCollection = defineCollection({
     type: "data",
-    schema: ({ image }) => z.object({
-      name: z.string(),
-      avatar: image(),
-    }),
-  })
+    schema: ({ image }) =>
+      z.object({
+        name: z.string(),
+        avatar: image(),
+        twitter: z.string(),
+        linkedIn: z.string(),
+        github: z.string(),
+        bio: z.string(),
+        subtitle: z.string(),
+      }),
+  });
 
 export const collections = {
     blog: blogCollection,
