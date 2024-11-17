@@ -1,26 +1,31 @@
 ---
-import { getCollection } from "astro:content"
-import { siteConfig } from "../config/site-config"
-import MainLayout from "../layouts/MainLayout.astro"
+import { getCollection } from "astro:content";
+import { siteConfig } from "../config/site-config";
+import MainLayout from "../layouts/MainLayout.astro";
 import TypeBlogPost from "src/components/TypeBlogPost.astro";
 
-const blogPost = await getCollection('blog');
-
+const blogPost = await getCollection("blog");
 ---
 
 <MainLayout title="Axl's Blog">
   <!-- component -->
-<section>
+  <section>
     <div class="container px-6 py-10 mx-auto">
-        <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white">{ siteConfig.title }</h1>
+      <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white">
+        {siteConfig.title}
+      </h1>
 
-        <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
-            {blogPost.map((post) => (
-          <TypeBlogPost post={ post } />
-        ))}
-        </div> 
+      <a href="/blog/1">Blog paginado</a>
+
+      <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+        {blogPost.map((post) => <TypeBlogPost post={post} />)}
+      </div>
     </div>
-</section>
+  </section>
 </MainLayout>
 
-
+<style>
+  a {
+    @apply text-blue-500 hover:underline;
+  }
+</style>
